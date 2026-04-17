@@ -6,10 +6,10 @@ import { useDebouncedCallback } from "use-debounce";
 import { fetchNotes } from "../../lib/api";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Pagination from "../../components/Pagination/Pagination";
-import NoteForm from "../../components/Modal/Modal";
+import NoteForm from "../../components/NoteForm/NoteForm";
 import NoteList from "../../components/NoteList/NoteList";
 import css from "./page.module.css";
-import Modal from "../../components/NoteCard/NoteCard";
+import Modal from "../../components/Modal/Modal";
 
 export default function Notes() {
   const [page, setPage] = useState(1);
