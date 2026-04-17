@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "../../../lib/api";
-import css from "./NoteDetails.module.css";
+import css from "./page.module.css";
 
 export default function NoteDetails() {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +15,7 @@ export default function NoteDetails() {
   } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
+    refetchOnMount: false, // ← додай це!
   });
 
   if (isLoading) return <p>Loading, please wait...</p>;
@@ -28,9 +29,7 @@ export default function NoteDetails() {
           <span className={css.tag}>{note.tag}</span>
         </div>
         <p className={css.content}>{note.content}</p>
-        <p className={css.date}>
-          {new Date(note.createdAt).toLocaleDateString()}
-        </p>
+        <p className={css.date}>{note.createdAt}</p>
       </div>
     </div>
   );
